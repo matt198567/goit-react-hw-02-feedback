@@ -4,7 +4,6 @@ import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Section } from './Section/Section';
 import { Notification } from './Notification/Notification';
 
-
 export class Feedback extends Component {
   state = {
     good: 0,
@@ -31,6 +30,7 @@ export class Feedback extends Component {
   };
 
   render() {
+    const options = Object.keys(this.state);
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
     const posFeedback = this.countPositiveFeedbackPercentage();
@@ -39,7 +39,7 @@ export class Feedback extends Component {
       <>
         <Section title={'Please leave your feedback'}>
           <FeedbackOptions
-            options={['good', 'neutral', 'bad']}
+            options={options}
             onLeaveFeedback={this.addFeedback}
           />
         </Section>
